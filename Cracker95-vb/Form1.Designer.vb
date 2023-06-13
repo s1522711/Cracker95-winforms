@@ -91,10 +91,11 @@ Partial Class Form1
         ' 
         ' ValidatorInput
         ' 
+        ValidatorInput.Font = New Font("Papyrus", 9F, FontStyle.Regular, GraphicsUnit.Point)
         ValidatorInput.Location = New Point(12, 223)
         ValidatorInput.Name = "ValidatorInput"
         ValidatorInput.PlaceholderText = "Enter Key To Validate"
-        ValidatorInput.Size = New Size(198, 23)
+        ValidatorInput.Size = New Size(198, 26)
         ValidatorInput.TabIndex = 5
         ' 
         ' ValidatorBtn

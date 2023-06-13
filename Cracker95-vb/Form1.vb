@@ -1,18 +1,28 @@
-﻿Public Class Form1
+﻿Imports System.IO
+
+Public Class Form1
     Shared random As New Random()
     Private Sub GenButton_Click(sender As Object, e As EventArgs) Handles GenButton.Click
         If CdSelect.Checked = True Then
-            Dim pre_dash As Integer = 0
+            Dim pre_dash As String = 0
             Dim post_dash As String = "0000001"
 
-            While Convert.ToString(pre_dash) = "0" Or Convert.ToString(pre_dash) = "333" Or Convert.ToString(pre_dash) = "444" Or Convert.ToString(pre_dash) = "555" Or Convert.ToString(pre_dash) = "666" Or Convert.ToString(pre_dash) = "777" Or Convert.ToString(pre_dash) = "888" Or Convert.ToString(pre_dash) = "999"
-                pre_dash = Random.Next(100, 999)
-            End While
+            'ValidatorOutput.Text = pre_dash
+            If random.Next(1, 9000) > 8000 Then
+                pre_dash = "YOLO"
+            Else
+                While Convert.ToString(pre_dash) = "0" Or Convert.ToString(pre_dash) = "333" Or Convert.ToString(pre_dash) = "444" Or Convert.ToString(pre_dash) = "555" Or Convert.ToString(pre_dash) = "666" Or Convert.ToString(pre_dash) = "777" Or Convert.ToString(pre_dash) = "888" Or Convert.ToString(pre_dash) = "999"
+                    pre_dash = random.Next(100, 999)
+                End While
+                pre_dash = pre_dash + "-"
+            End If
+
             While (Convert.ToInt32(post_dash(0)) + Convert.ToInt32(post_dash(1)) + Convert.ToInt32(post_dash(2)) + Convert.ToInt32(post_dash(3)) + Convert.ToInt32(post_dash(4)) + Convert.ToInt32(post_dash(5)) + Convert.ToInt32(post_dash(6))) Mod 7 > 0
                 post_dash = Convert.ToString(random.Next(1, 9)) + Convert.ToString(random.Next(1, 9)) + Convert.ToString(random.Next(1, 9)) + Convert.ToString(random.Next(1, 9)) + Convert.ToString(random.Next(1, 9)) + Convert.ToString(random.Next(1, 9)) + Convert.ToString(random.Next(1, 7))
             End While
 
-            OutputBox.Text = Convert.ToString(pre_dash) + "-" + post_dash
+
+            OutputBox.Text = Convert.ToString(pre_dash) + post_dash
 
         ElseIf OemSelect.Checked = True Then
             Dim box1 As String = Convert.ToString(random.Next(100, 365)) + Convert.ToString(random.Next(95, 99))
